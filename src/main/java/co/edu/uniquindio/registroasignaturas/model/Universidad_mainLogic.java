@@ -3,17 +3,29 @@ package co.edu.uniquindio.registroasignaturas.model;
 import java.util.ArrayList;
 
 public class Universidad_mainLogic {
-    private ArrayList<Usuario> listUsuarios = new ArrayList<>();
-    ArrayList<Asignatura> listaAsignaturas;
-    ArrayList<Estudiante> listaEstudiantes;
+    Usuario user;
+    ArrayList<Asignatura> listaAsignaturas = new ArrayList<>();
+    ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
+    ArrayList<Docente> listaDocentes = new ArrayList<>();
+
+
+
     //datos quemados de listaAsignaturas y listaEstudiantes:
     public void quemarDatos(){
         //lista estudiantes:
-        listaEstudiantes.add(new Estudiante("Juan Andres Gómez", "111"));
-        listaEstudiantes.add(new Estudiante("Isabella López Sánchez", "222"));
-        listaEstudiantes.add(new Estudiante("José Jaramillo Díaz", "333"));
-        listaEstudiantes.add(new Estudiante("Sofia González Martínez", "444"));
-        listaEstudiantes.add(new Estudiante("Manuel Antonio Cardenas Giraldo", "555"));
+        listaEstudiantes.add(new Estudiante
+                ("yan","123","Franco","Gómez","yan@hotmail",user.getTipoUsuario().ESTUDIANTE));
+        listaEstudiantes.add(new Estudiante
+                ("Liz","321","Eliza","Perex","liz@hotmail",user.getTipoUsuario().ESTUDIANTE));
+        listaEstudiantes.add(new Estudiante
+                ("Lucho","789","Luis","Lopez","lucho@hotmail",user.getTipoUsuario().ESTUDIANTE));
+        //lista docentes:
+        listaEstudiantes.add(new Estudiante
+                ("Georg","123","Georege","Gómez","yan@hotmail",user.getTipoUsuario().DOCENTE));
+        listaEstudiantes.add(new Estudiante
+                ("Rodri","321","Rodrigo","Perex","liz@hotmail",user.getTipoUsuario().DOCENTE));
+        listaEstudiantes.add(new Estudiante
+                ("Luisa","789","Luisa","Lopez","lucho@hotmail",user.getTipoUsuario().DOCENTE));
         //lista asignatura: Teorico practicas
         listaAsignaturas.add(new TeoricoPractica("Lectura y Escritura en Ingeniería", "12306", 2, 4, 4,2));
         listaAsignaturas.add(new TeoricoPractica("Introducción a la Ingería de Sistemas y Computo", "12303", 3, 4, 4,2));

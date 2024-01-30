@@ -1,31 +1,11 @@
 package co.edu.uniquindio.registroasignaturas.model;
 
-public class Estudiante {
-    //Atributos:
-    private String nombre;
-    private String cedula;
+import co.edu.uniquindio.registroasignaturas.enums.TipoUsuario;
 
-    //Constructores:
+public class Estudiante extends Usuario{
     public Estudiante(){}
-    public Estudiante(String nombre, String cedula)
-    {
-        this.nombre = nombre;
-        this.cedula = cedula;
-    }
-    //Getters/setters:
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public Estudiante(String user, String password, String name, String lastName, String email, TipoUsuario tipo) {
+        super(user, password, name, lastName, email, tipo);
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-    public String getCedula() {
-        return cedula;
-    }
-
 }

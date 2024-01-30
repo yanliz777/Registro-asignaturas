@@ -1,7 +1,10 @@
 package co.edu.uniquindio.registroasignaturas.model;
 
+import co.edu.uniquindio.registroasignaturas.enums.TipoUsuario;
+
 public class Usuario {
     //atributos:
+    private TipoUsuario tipoUsuario;
     private String user;
     private String password;
     private String name;
@@ -9,7 +12,8 @@ public class Usuario {
     private String email;
     //constructores:
     public Usuario(){}
-    public Usuario(String user, String password, String name, String lastName, String email) {
+    public Usuario(String user, String password, String name, String lastName, String email,TipoUsuario tipo) {
+        this.tipoUsuario = tipo;
         this.user = user;
         this.password = password;
         this.name = name;
@@ -17,6 +21,13 @@ public class Usuario {
         this.email = email;
     }
     //getters/setters:
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
     public String getUser() {
         return user;
     }

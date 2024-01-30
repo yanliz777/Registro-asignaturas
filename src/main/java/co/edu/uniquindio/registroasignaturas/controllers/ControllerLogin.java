@@ -3,7 +3,7 @@ package co.edu.uniquindio.registroasignaturas.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class ControllerLogin {
     @FXML
     private Label welcomeText;
 
