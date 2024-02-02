@@ -4,14 +4,17 @@ import co.edu.uniquindio.registroasignaturas.Main;
 import co.edu.uniquindio.registroasignaturas.enums.TipoUsuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
-public class ControllerLogin {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    Main Ventana = new Main();//para darle manejo a las ventanas
+public class ControllerLogin implements Initializable {
+
+    Main ventana = new Main();//para darle manejo a las ventanas
 
     ControllerRegistro controllerRegistro = new ControllerRegistro();//para comunicarnos con este
 
@@ -36,7 +39,34 @@ public class ControllerLogin {
     }
 
     @FXML
-    void btnRegister(ActionEvent event) {
+    void btnRegister(ActionEvent event) throws IOException {
+        cerrarVentana(btnLogin);//Me permite cerrar la ventana del login
+        //para así darle apertura a la ventana de registro y no tener tantas ventanas abiertas.
+        ventana.cargarVentanaRegistro();
+    }
+
+    private void mostrarMensaje(String titulo, String head, String content, Alert.AlertType tipo) {
+        Alert alerta = new Alert(null);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(head);
+        alerta.setContentText(content);
+        alerta.setAlertType(tipo);
+        alerta.show();
+    }
+
+    /**
+     *Método que me permite cerrar una ventana
+     * para darle apertura a otra y de esta manera no tener
+     * varias ventanas abiertas, el botón que le envía por parámetro
+     * es el de la ventana actual que sería el que se cierra
+     */
+    public void cerrarVentana(Button btn) {
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }
