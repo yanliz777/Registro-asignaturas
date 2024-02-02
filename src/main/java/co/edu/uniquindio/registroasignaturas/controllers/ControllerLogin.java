@@ -2,6 +2,8 @@ package co.edu.uniquindio.registroasignaturas.controllers;
 
 import co.edu.uniquindio.registroasignaturas.Main;
 import co.edu.uniquindio.registroasignaturas.enums.TipoUsuario;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,7 +19,7 @@ public class ControllerLogin implements Initializable {
     Main ventana = new Main();//para darle manejo a las ventanas
 
     ControllerRegistro controllerRegistro = new ControllerRegistro();//para comunicarnos con este
-
+    private final ObservableList<TipoUsuario> tipoUserObservableList = FXCollections.observableArrayList();
     @FXML
     private ComboBox<TipoUsuario> cbxTypeUserLogin;
 
@@ -34,7 +36,30 @@ public class ControllerLogin implements Initializable {
     private Button btnRegister;
 
     @FXML
-    void btnLogin(ActionEvent event) {
+    void btnLogin(ActionEvent event) throws IOException {
+        TipoUsuario tipoUsuario = cbxTypeUserLogin.getSelectionModel().getSelectedItem();
+        String user = txtUserLogin.getText();
+        String password = txtPasswordLogin.getText();
+
+        if(!(user.isEmpty() && password.isEmpty() ))//si no están vacíos entran al if
+        {
+
+            /*if(UsuarioLogic.autentificar(user,password))
+            {
+                cerrarVentana(btnLogin);//cierra la ventana del login
+                ventana.cargarVentanaDocente();//carga la ventana principal
+                //controllerPginaPrincipal.mostrarNombre(user);
+            }
+            else{
+                mostrarMensaje("Datos de acceso incorrectos", null, "Registrese !! o asegúrese de introducir  los datos correctos ",
+                        Alert.AlertType.ERROR);
+            }*/
+        }
+        else {
+            mostrarMensaje("Dejo los campos vacíos", null, "Asegúrese en llenar los campos",
+                    Alert.AlertType.ERROR);
+        }
+
 
     }
 
@@ -65,8 +90,24 @@ public class ControllerLogin implements Initializable {
         stage.close();
     }
 
+    /**
+     * Me permite mostrar en el combo box los Tipos de Producto:
+     */
+    public void mostrarTiposUser()//para mostrar en el combo box
+    {
+        tipoUserObservableList.add(TipoUsuario.DOCENTE);
+        tipoUserObservableList.add(TipoUsuario.ESTUDIANTE);
+        //cargamos los tipos de productos en el combo box:
+        cbxTypeUserLogin.setItems(tipoUserObservableList);
+    }
+
+    /**
+     *Este método sirve para inicializar/empezar los elementos
+     * que necesito agregar en la Gui, por ejemplo, los atributos
+     * que necesito que se carguen en el comboBox que tenemos en el loginView
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        mostrarTiposUser();
     }
 }

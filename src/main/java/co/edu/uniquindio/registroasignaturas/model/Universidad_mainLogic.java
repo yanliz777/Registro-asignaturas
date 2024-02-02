@@ -20,12 +20,12 @@ public class Universidad_mainLogic {
         listaEstudiantes.add(new Estudiante
                 ("Lucho","789","Luis","Lopez","lucho@hotmail",user.getTipoUsuario().ESTUDIANTE));
         //lista docentes:
-        listaEstudiantes.add(new Estudiante
-                ("Georg","123","Georege","Gómez","yan@hotmail",user.getTipoUsuario().DOCENTE));
-        listaEstudiantes.add(new Estudiante
-                ("Rodri","321","Rodrigo","Perex","liz@hotmail",user.getTipoUsuario().DOCENTE));
-        listaEstudiantes.add(new Estudiante
-                ("Luisa","789","Luisa","Lopez","lucho@hotmail",user.getTipoUsuario().DOCENTE));
+        listaDocentes.add(new Docente
+                ("Georg","123","Georege","Gómez","george@hotmail",user.getTipoUsuario().DOCENTE));
+        listaDocentes.add(new Docente
+                ("Rodri","321","Rodrigo","Perex","Rodri@hotmail",user.getTipoUsuario().DOCENTE));
+        listaDocentes.add(new Docente
+                ("Luisa","789","Luisa","Lopez","luisa@hotmail",user.getTipoUsuario().DOCENTE));
         //lista asignatura: Teorico practicas
         listaAsignaturas.add(new TeoricoPractica("Lectura y Escritura en Ingeniería", "12306", 2, 4, 4,2));
         listaAsignaturas.add(new TeoricoPractica("Introducción a la Ingería de Sistemas y Computo", "12303", 3, 4, 4,2));
