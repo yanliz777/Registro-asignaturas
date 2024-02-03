@@ -35,27 +35,6 @@ public class ControllerLogin implements Initializable {
 
     @FXML
     private TextField txtUserLogin;
- /*
-
-        boolean bandera = loginControladorSecundario.loginUsuario(usuario,email,contrasena);
-
-        if (cbxTipoUsuario.getSelectionModel().getSelectedItem().equals(TipoUsuario.comprador)){
-            if (bandera){
-                cerrarVentana(btnIngresar);//cierra la ventana Login
-                helloApplication.cargarVentanaComprador();//carga(pone) la ventana del comprador
-            }else {
-                System.out.println("no esta registrado");
-            }
-        }else if (cbxTipoUsuario.getSelectionModel().getSelectedItem().equals(TipoUsuario.vendedor)){
-            if (bandera){
-                cerrarVentana(btnIngresar);
-                helloApplication.cargarVentanaVendedor();
-            }else {
-                System.out.println("no esta registrado");
-            }
-
-        }
-  */
     @FXML
     private Button btnRegister;
 

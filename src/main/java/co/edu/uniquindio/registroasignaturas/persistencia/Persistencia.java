@@ -1,6 +1,7 @@
 package co.edu.uniquindio.registroasignaturas.persistencia;
 
 import co.edu.uniquindio.registroasignaturas.enums.TipoUsuario;
+import co.edu.uniquindio.registroasignaturas.model.Estudiante;
 import co.edu.uniquindio.registroasignaturas.model.Profesor;
 
 import java.io.IOException;
@@ -44,6 +45,36 @@ public class Persistencia {
             docentes.add(docente);
         }
         return docentes;
+    }
+
+    public void guardarEstudiantes(ArrayList<Estudiante> listaEstudiantes) throws IOException {
+        StringBuilder datos  = new StringBuilder();
+        for (Estudiante estudiante: listaEstudiantes) {
+            datos.append(estudiante.getUser()).append("!!").
+                    append(estudiante.getNombre()).append("!!").
+                    append(estudiante.getApellido()).append("!!").
+                    append(estudiante.getEmail()).append("!!").
+                    append(estudiante.getPassword()).append("!!").
+                    append(estudiante.getTipoUsuario()).append("\n");
+        }
+        archivoUtil.guardarArchivo(rutaEstudiantes, datos.toString(), false );
+    }
+    public ArrayList<Estudiante> leerEstudiante()throws IOException{
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        ArrayList<String>datos = archivoUtil.leerArchivo(rutaProfesores);
+        String cadena;
+        for (String t: datos) {
+            cadena = t;
+            Estudiante estudiante = new Estudiante();
+            estudiante.setUser(cadena.split("!!")[0]);
+            estudiante.setNombre(cadena.split("!!")[1]);
+            estudiante.setApellido(cadena.split("!!")[2]);
+            estudiante.setEmail(cadena.split("!!")[5]);
+            estudiante.setPassword(cadena.split("!!")[6]);
+            estudiante.setTipoUsuario(TipoUsuario.valueOf(cadena.split("!!")[7]));
+            estudiantes.add(estudiante);
+        }
+        return estudiantes;
     }
 
 }
