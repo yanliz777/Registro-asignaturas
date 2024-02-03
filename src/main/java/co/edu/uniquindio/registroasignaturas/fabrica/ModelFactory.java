@@ -56,5 +56,12 @@ public class ModelFactory
         }
     }
 
+    public boolean loginUsuarioEstudiante(String user, String password) {
+        return true;
+    }
+
+    public boolean loginUsuarioProfesor(String user, String password) {
+        return true;
+    }
 
 }

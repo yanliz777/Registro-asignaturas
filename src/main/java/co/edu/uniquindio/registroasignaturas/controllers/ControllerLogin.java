@@ -3,6 +3,7 @@ package co.edu.uniquindio.registroasignaturas.controllers;
 import co.edu.uniquindio.registroasignaturas.Main;
 import co.edu.uniquindio.registroasignaturas.controllerSecond.ControllerLoginSecond;
 import co.edu.uniquindio.registroasignaturas.enums.TipoUsuario;
+import co.edu.uniquindio.registroasignaturas.fabrica.ModelFactory;
 import co.edu.uniquindio.registroasignaturas.model.Universidad_mainLogic;
 import co.edu.uniquindio.registroasignaturas.model.Usuario;
 import javafx.collections.FXCollections;
@@ -18,8 +19,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerLogin implements Initializable {
-
-    ControllerLoginSecond controllerLoginSecond = new ControllerLoginSecond();
+    public ModelFactory modelFactory = new ModelFactory();
+    ControllerLoginSecond controllerLoginSecond;
     Main ventana = new Main();//para darle manejo a las ventanas
 
     ControllerRegistro controllerRegistro = new ControllerRegistro();//para comunicarnos con este
@@ -113,7 +114,7 @@ public class ControllerLogin implements Initializable {
     }
 
     /**
-     * Me permite mostrar en el combo box los Tipos de Producto:
+     * Me permite mostrar en el combo box los Tipos de usuarios(Estudiante,Docente):
      */
     public void mostrarTiposUser()//para mostrar en el combo box
     {
@@ -123,13 +124,21 @@ public class ControllerLogin implements Initializable {
         cbxTypeUserLogin.setItems(tipoUserObservableList);
     }
 
+    public void iniciar()
+    {
+        modelFactory = ModelFactory.getInstance();
+        controllerLoginSecond = new ControllerLoginSecond(modelFactory);
+        new ControllerLogin();
+        mostrarTiposUser();
+    }
+
     /**
      *Este método sirve para inicializar/empezar los elementos
      * que necesito agregar en la Gui, por ejemplo, los atributos
-     * que necesito que se carguen en el comboBox que tenemos en el loginView
+     * que necesito que se carguen en el comboBox(mostrarTiposUser()) que tenemos en el loginView
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        mostrarTiposUser();
+        iniciar();
     }
 }
