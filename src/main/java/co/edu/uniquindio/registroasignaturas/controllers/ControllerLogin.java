@@ -1,7 +1,10 @@
 package co.edu.uniquindio.registroasignaturas.controllers;
 
 import co.edu.uniquindio.registroasignaturas.Main;
+import co.edu.uniquindio.registroasignaturas.controllerSecond.ControllerLoginSecond;
 import co.edu.uniquindio.registroasignaturas.enums.TipoUsuario;
+import co.edu.uniquindio.registroasignaturas.model.Universidad_mainLogic;
+import co.edu.uniquindio.registroasignaturas.model.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +19,7 @@ import java.util.ResourceBundle;
 
 public class ControllerLogin implements Initializable {
 
+    ControllerLoginSecond controllerLoginSecond = new ControllerLoginSecond();
     Main ventana = new Main();//para darle manejo a las ventanas
 
     ControllerRegistro controllerRegistro = new ControllerRegistro();//para comunicarnos con este
@@ -31,7 +35,27 @@ public class ControllerLogin implements Initializable {
 
     @FXML
     private TextField txtUserLogin;
+ /*
 
+        boolean bandera = loginControladorSecundario.loginUsuario(usuario,email,contrasena);
+
+        if (cbxTipoUsuario.getSelectionModel().getSelectedItem().equals(TipoUsuario.comprador)){
+            if (bandera){
+                cerrarVentana(btnIngresar);//cierra la ventana Login
+                helloApplication.cargarVentanaComprador();//carga(pone) la ventana del comprador
+            }else {
+                System.out.println("no esta registrado");
+            }
+        }else if (cbxTipoUsuario.getSelectionModel().getSelectedItem().equals(TipoUsuario.vendedor)){
+            if (bandera){
+                cerrarVentana(btnIngresar);
+                helloApplication.cargarVentanaVendedor();
+            }else {
+                System.out.println("no esta registrado");
+            }
+
+        }
+  */
     @FXML
     private Button btnRegister;
 
@@ -41,26 +65,45 @@ public class ControllerLogin implements Initializable {
         String user = txtUserLogin.getText();
         String password = txtPasswordLogin.getText();
 
-        if(!(user.isEmpty() && password.isEmpty() ))//si no están vacíos entran al if
+        Usuario usuario = new Usuario();
+        usuario.setUser(user);
+        usuario.setPassword(password);
+
+        if(cbxTypeUserLogin.getSelectionModel().getSelectedItem().equals(TipoUsuario.DOCENTE))
         {
-
-            /*if(UsuarioLogic.autentificar(user,password))
+            if (!(user.isEmpty() && password.isEmpty()))//si no están vacíos entran al if
             {
-                cerrarVentana(btnLogin);//cierra la ventana del login
-                ventana.cargarVentanaDocente();//carga la ventana principal
-                //controllerPginaPrincipal.mostrarNombre(user);
-            }
-            else{
-                mostrarMensaje("Datos de acceso incorrectos", null, "Registrese !! o asegúrese de introducir  los datos correctos ",
+                boolean verificar = controllerLoginSecond.autentificar(user, password);
+
+                if (verificar) {
+                    cerrarVentana(btnLogin);//cierra la ventana del login
+                    ventana.cargarVentanaDocente();//carga la ventana principal
+                    //controllerPginaPrincipal.mostrarNombre(user);
+                } else {
+                    mostrarMensaje("Datos de acceso incorrectos", null, "Registrese !! o asegúrese de introducir  los datos correctos ",
+                            Alert.AlertType.ERROR);
+                }
+            } else {
+                mostrarMensaje("Dejo los campos vacíos", null, "Asegúrese en llenar los campos",
                         Alert.AlertType.ERROR);
-            }*/
+            }
         }
-        else {
-            mostrarMensaje("Dejo los campos vacíos", null, "Asegúrese en llenar los campos",
-                    Alert.AlertType.ERROR);
+        else if (cbxTypeUserLogin.getSelectionModel().getSelectedItem().equals(TipoUsuario.ESTUDIANTE))
+        {
+            if (!(user.isEmpty() && password.isEmpty()))//si no están vacíos entran al if
+            {
+                boolean verificar = controllerLoginSecond.autentificar(user, password);
+
+                if (verificar) {
+                    cerrarVentana(btnLogin);//cierra la ventana del login
+                    ventana.cargarVentanaEstudiante();//carga la ventana principal
+                    //controllerPginaPrincipal.mostrarNombre(user);
+                } else {
+                    mostrarMensaje("Datos de acceso incorrectos", null, "Registrese !! o asegúrese de introducir  los datos correctos ",
+                            Alert.AlertType.ERROR);
+                }
+            }
         }
-
-
     }
 
     @FXML

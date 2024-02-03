@@ -48,6 +48,18 @@ public class Main extends Application {
         stage2.setResizable(false);//para tener un tamaño único
         stage2.show();
     }
+    public void cargarVentanaEstudiante() throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ProfesorView.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        Stage stage2 = new Stage();
+        stage2.centerOnScreen();
+        stage2.setTitle("ventana estudiante");
+        stage2.setScene(scene);
+        stage2.setResizable(false);//para tener un tamaño único
+        stage2.show();
+    }
 
     public static void main(String[] args) {
         launch();
