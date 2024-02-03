@@ -50,7 +50,7 @@ public class Main extends Application {
     }
     public void cargarVentanaEstudiante() throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ProfesorView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("EstudianteView.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         Stage stage2 = new Stage();
