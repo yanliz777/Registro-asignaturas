@@ -1,7 +1,5 @@
 package co.edu.uniquindio.registroasignaturas.model;
 
-import java.time.LocalDate;
-
 public class Persona {
     private String nombre;
     private String apellido;

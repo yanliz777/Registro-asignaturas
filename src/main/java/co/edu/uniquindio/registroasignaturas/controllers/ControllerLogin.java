@@ -4,7 +4,6 @@ import co.edu.uniquindio.registroasignaturas.Main;
 import co.edu.uniquindio.registroasignaturas.controllerSecond.ControllerLoginSecond;
 import co.edu.uniquindio.registroasignaturas.enums.TipoUsuario;
 import co.edu.uniquindio.registroasignaturas.fabrica.ModelFactory;
-import co.edu.uniquindio.registroasignaturas.model.Universidad_mainLogic;
 import co.edu.uniquindio.registroasignaturas.model.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
