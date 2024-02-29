@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerLogin implements Initializable {
-    public ModelFactory modelFactory = new ModelFactory();
+    public ModelFactory modelFactory;
     ControllerLoginSecond controllerLoginSecond;
     Main ventana = new Main();//para darle manejo a las ventanas
 
