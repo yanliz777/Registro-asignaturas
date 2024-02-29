@@ -3,7 +3,6 @@ package co.edu.uniquindio.registroasignaturas.persistencia;
 import co.edu.uniquindio.registroasignaturas.enums.TipoUsuario;
 import co.edu.uniquindio.registroasignaturas.model.Estudiante;
 import co.edu.uniquindio.registroasignaturas.model.Profesor;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -20,12 +19,11 @@ public class Persistencia {
     public void guardarDocente(ArrayList<Profesor>listaVendedores) throws IOException {
         StringBuilder datos  = new StringBuilder();
         for (Profesor docente: listaVendedores) {
-            datos.append(docente.getUser()).append("!!").
+            datos.append(docente.getUsuario()).append("!!").
                     append(docente.getNombre()).append("!!").
                     append(docente.getApellido()).append("!!").
                     append(docente.getEmail()).append("!!").
-                    append(docente.getPassword()).append("!!").
-                    append(docente.getTipoUsuario()).append("\n");
+                    append(docente.getPassword()).append("\n");
         }
         archivoUtil.guardarArchivo(rutaProfesores, datos.toString(), false );
     }
@@ -36,12 +34,11 @@ public class Persistencia {
         for (String t: datos) {
             cadena = t;
             Profesor docente = new Profesor();
-            docente.setUser(cadena.split("!!")[0]);
+            docente.setUsuario(TipoUsuario.valueOf(cadena.split("!!")[0]));
             docente.setNombre(cadena.split("!!")[1]);
             docente.setApellido(cadena.split("!!")[2]);
-            docente.setEmail(cadena.split("!!")[5]);
-            docente.setPassword(cadena.split("!!")[6]);
-            docente.setTipoUsuario(TipoUsuario.valueOf(cadena.split("!!")[7]));
+            docente.setEmail(cadena.split("!!")[3]);
+            docente.setPassword(cadena.split("!!")[4]);
             docentes.add(docente);
         }
         return docentes;
@@ -50,12 +47,12 @@ public class Persistencia {
     public void guardarEstudiantes(ArrayList<Estudiante> listaEstudiantes) throws IOException {
         StringBuilder datos  = new StringBuilder();
         for (Estudiante estudiante: listaEstudiantes) {
-            datos.append(estudiante.getUser()).append("!!").
+            datos.append(estudiante.getUsuario()).append("!!").
                     append(estudiante.getNombre()).append("!!").
                     append(estudiante.getApellido()).append("!!").
                     append(estudiante.getEmail()).append("!!").
-                    append(estudiante.getPassword()).append("!!").
-                    append(estudiante.getTipoUsuario()).append("\n");
+                    append(estudiante.getPassword()).append("\n");
+
         }
         archivoUtil.guardarArchivo(rutaEstudiantes, datos.toString(), false );
     }
@@ -66,12 +63,11 @@ public class Persistencia {
         for (String t: datos) {
             cadena = t;
             Estudiante estudiante = new Estudiante();
-            estudiante.setUser(cadena.split("!!")[0]);
+            estudiante.setUsuario(TipoUsuario.valueOf(cadena.split("!!")[0]));
             estudiante.setNombre(cadena.split("!!")[1]);
             estudiante.setApellido(cadena.split("!!")[2]);
-            estudiante.setEmail(cadena.split("!!")[5]);
-            estudiante.setPassword(cadena.split("!!")[6]);
-            estudiante.setTipoUsuario(TipoUsuario.valueOf(cadena.split("!!")[7]));
+            estudiante.setEmail(cadena.split("!!")[3]);
+            estudiante.setPassword(cadena.split("!!")[4]);
             estudiantes.add(estudiante);
         }
         return estudiantes;

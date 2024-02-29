@@ -3,6 +3,7 @@ package co.edu.uniquindio.registroasignaturas.fabrica;
 import co.edu.uniquindio.registroasignaturas.model.Estudiante;
 import co.edu.uniquindio.registroasignaturas.model.Profesor;
 import co.edu.uniquindio.registroasignaturas.model.Universidad_mainLogic;
+import co.edu.uniquindio.registroasignaturas.model.Usuario;
 import co.edu.uniquindio.registroasignaturas.persistencia.Persistencia;
 
 import java.io.IOException;
@@ -38,7 +39,8 @@ public class ModelFactory
     public void setUniversidad(Universidad_mainLogic universidad) {
         this.universidad = universidad;
     }
-    public void cargarDatosDesdeArchivos() {
+    public void cargarDatosDesdeArchivos()
+    {
         this.universidad = new Universidad_mainLogic();
         try {
             ArrayList<Estudiante> estudiantes;
@@ -56,12 +58,57 @@ public class ModelFactory
         }
     }
 
+    public Usuario guardarEstudiante(Usuario usuario) {
+        Estudiante est = null;
+        try {
+            est = getUniversidad().guardarEstudiante(usuario);
+            persistencia.guardarEstudiantes(getUniversidad().getListaEstudiantes());
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        return est;
+    }
+    public Usuario guardarDocente(Usuario usuario) {
+        Profesor profesor = null;
+        try {
+            profesor = getUniversidad().guardarProfesor(usuario);
+            persistencia.guardarDocente(getUniversidad().getListaProfesores());
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        return profesor;
+    }
+
     public boolean loginUsuarioEstudiante(String user, String password) {
-        return true;
+        boolean bandera = false;
+            
+        try
+        {
+            bandera = getUniversidad().loginUsuarioEstudiante(user,password);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+            return bandera;
+
     }
 
     public boolean loginUsuarioProfesor(String user, String password) {
-        return true;
+        boolean bandera = false;
+
+        try
+        {
+            bandera = getUniversidad().loginUsuarioProfesor(user,password);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return bandera;
+
     }
 
 }

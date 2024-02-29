@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerLogin implements Initializable {
-    public ModelFactory modelFactory;
+    public ModelFactory modelFactory = new ModelFactory();
     ControllerLoginSecond controllerLoginSecond;
     Main ventana = new Main();//para darle manejo a las ventanas
 
@@ -45,7 +45,7 @@ public class ControllerLogin implements Initializable {
         String password = txtPasswordLogin.getText();
 
         Usuario usuario = new Usuario();
-        usuario.setUser(user);
+        usuario.setUsuario(TipoUsuario.valueOf(user));
         usuario.setPassword(password);
 
         if(cbxTypeUserLogin.getSelectionModel().getSelectedItem().equals(TipoUsuario.DOCENTE))
@@ -125,7 +125,7 @@ public class ControllerLogin implements Initializable {
 
     public void iniciar()
     {
-        modelFactory = ModelFactory.getInstance();
+        //modelFactory = ModelFactory.getInstance();
         controllerLoginSecond = new ControllerLoginSecond(modelFactory);
         new ControllerLogin();
         mostrarTiposUser();

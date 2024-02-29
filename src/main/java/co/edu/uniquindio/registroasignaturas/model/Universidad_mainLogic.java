@@ -17,4 +17,39 @@ public class Universidad_mainLogic {
         return listaProfesores;
     }
 
+    public boolean loginUsuarioEstudiante(String user, String password) {
+        boolean badera = false;
+        for (Estudiante estudiante : getListaEstudiantes())
+        {
+            if (estudiante.getUsuario().equals(user) && estudiante.getPassword().equals(password))
+            {
+                badera = true;
+                break;
+            }
+        }
+        return  badera;
+    }
+
+
+
+    public Estudiante guardarEstudiante(Usuario usuario) {
+        return null;
+    }
+
+    public Profesor guardarProfesor(Usuario usuario) {
+        return null;
+    }
+
+    public boolean loginUsuarioProfesor(String user, String password) {
+        boolean badera = false;
+        for (Profesor profesor : getListaProfesores())
+        {
+            if (profesor.getUsuario().equals(user) && profesor.getPassword().equals(password))
+            {
+                badera = true;
+                break;
+            }
+        }
+        return  badera;
+    }
 }

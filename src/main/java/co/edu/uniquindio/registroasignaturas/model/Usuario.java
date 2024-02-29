@@ -4,26 +4,19 @@ import co.edu.uniquindio.registroasignaturas.enums.TipoUsuario;
 
 public class Usuario extends Persona {
     //atributos:
-    private TipoUsuario tipoUsuario;
-    private String user;
+    private TipoUsuario usuario;
     private String password;
     //constructor:
     public Usuario(){}
 
     //getters/setters:
-    public TipoUsuario getTipoUsuario() {
-        return tipoUsuario;
+
+    public TipoUsuario getUsuario() {
+        return usuario;
     }
 
-    public void setTipoUsuario(TipoUsuario tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
-    }
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
+    public void setUsuario(TipoUsuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getPassword() {
