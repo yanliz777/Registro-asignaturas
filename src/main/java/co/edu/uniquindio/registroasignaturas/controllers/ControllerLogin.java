@@ -40,8 +40,8 @@ public class ControllerLogin implements Initializable {
 
     @FXML
     void btnLogin(ActionEvent event) throws IOException {
-        TipoUsuario tipoUsuario = cbxTypeUserLogin.getSelectionModel().getSelectedItem();
-        String user = txtUserLogin.getText();
+        //TipoUsuario tipoUsuario = cbxTypeUserLogin.getSelectionModel().getSelectedItem();
+        String user = String.valueOf(cbxTypeUserLogin.getSelectionModel().getSelectedItem());
         String password = txtPasswordLogin.getText();
 
         Usuario usuario = new Usuario();
